@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionBank {
@@ -128,7 +129,16 @@ public class QuestionBank {
     public List<Question> getAllQuestions() {
         return questions;
     }
-
+    /**
+     * Retunerar en lista med alla frågor i slumpmässig ordning.
+     * Originalfrågelistan i QuestionBank ändras itne.
+     * @return en ny lista med frågorn i slumpmässig orning.
+     */
+    public List<Question> getRandomQuestions() {
+        List<Question> shuffled = new ArrayList<>(questions); //skapa en kopia
+        Collections.shuffle(shuffled); // Blanda kopian
+        return shuffled;
+    }
     public List<Question> getQuestionsByCategory(String category) {
         List<Question> filtered = new ArrayList<>();
         for (Question q : questions) {

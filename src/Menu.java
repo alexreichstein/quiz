@@ -44,11 +44,12 @@ public class Menu {
     private void startNewGame() {
         if (player == null) {
             System.out.println("You must create a player first!");
+            return;
         }
 
-        System.out.println("Starting Quiz-Game!" + player.getName());
+        System.out.println("Starting Quiz-Game! " + player.getName());
 
-        List<Question> questions = new QuestionBank().getAllQuestions();
+        List<Question> questions = new QuestionBank().getRandomQuestions();
         int score = 0;
 
         for (Question q : questions) {
