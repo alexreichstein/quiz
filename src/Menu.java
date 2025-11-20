@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -35,7 +36,7 @@ public class Menu {
     private void createNewPlayer() {
         System.out.println("Enter player name: ");
         String name = scanner.nextLine();
-        Player player = new Player(name, 0);
+        player = new Player(name, 0);                          // Fråga varför
         System.out.println("Player created " + player.getName());
 
     }
@@ -44,6 +45,36 @@ public class Menu {
         if (player == null) {
             System.out.println("You must create a player first!");
         }
+
+        System.out.println("Starting Quiz-Game!" + player.getName());
+
+        List<Question> questions = new QuestionBank().getAllQuestions();
+        int score = 0;
+
+        for (Question q : questions) {
+            System.out.println("\n" + q.getQuestionText());
+
+            String[] options = q.getOptions();
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ". " + options[i]);
+            }
+
+            System.out.print("Enter your answer: ");
+            int answer = scanner.nextInt();
+            scanner.nextLine();
+
+            if (q.isCorrect(answer - 1)) {
+                System.out.println("Correct!");
+                score++;
+            } else {
+                System.out.println("Wrong!");
+                System.out.println("Correct answer:" + options[q.getCorrectAnswerIndex()]);
+            }
+        }
+        System.out.println("\nQuiz finished!");
+        System.out.println("Score: " + score + "/" + questions.size());
     }
+
 }
+
 
