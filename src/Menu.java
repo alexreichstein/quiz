@@ -10,8 +10,8 @@ public class Menu {
 
         while (true) {
             System.out.println("Welcome to Quiz\n" +
-                    "1. New Game\n" +
-                    "2. New Player\n" +
+                    "1. New Player\n" +
+                    "2. New Game\n" +
                     "3. Quit");
 
             int choice = scanner.nextInt();
@@ -19,10 +19,10 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    startNewGame();
+                    createNewPlayer();
                     break;
                 case 2:
-                    createNewPlayer();
+                    startNewGame();
                     break;
                 case 3:
                     System.out.println("Good Bye!");
