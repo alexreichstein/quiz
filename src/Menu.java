@@ -36,7 +36,7 @@ public class Menu {
     private void createNewPlayer() {
         System.out.println("Enter player name: ");
         String name = scanner.nextLine();
-        player = new Player(name, 0);                          // Fråga varför
+        player = new Player(name, 0);
         System.out.println("Player created " + player.getName());
 
     }
@@ -67,6 +67,12 @@ public class Menu {
             if (q.isCorrect(answer - 1)) {
                 System.out.println("Correct!");
                 score++;
+
+            if (score >= 10) {
+                System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
+                return;
+            }
+
             } else {
                 System.out.println("Wrong!");
                 System.out.println("Correct answer:" + options[q.getCorrectAnswerIndex()]);
