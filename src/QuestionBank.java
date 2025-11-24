@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class QuestionBank {
-    private List<Question>  questions = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
     public QuestionBank() {
         loadQuestions();
@@ -126,6 +126,7 @@ public class QuestionBank {
                 "Serier"
         ));
     }
+
     public List<Question> getAllQuestions() {
         return questions;
     }
