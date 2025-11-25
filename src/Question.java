@@ -3,12 +3,14 @@ public class Question {
     private final String[] options;
     private final int correctAnswerIndex; // 0–3
     private final String category;        // t.ex. "Sport", "Film"
+    private int level;
 
-    public Question(String questionText, String[] options, int correctAnswerIndex, String category) {
+    public Question(String questionText, String[] options, int correctAnswerIndex, String category, int level) {
         this.questionText = questionText;
         this.options = options;
         this.correctAnswerIndex = correctAnswerIndex;
         this.category = category;
+        this.level = level;
     }
 
     public String getQuestionText() {
@@ -25,6 +27,10 @@ public class Question {
 
     public String getCategory() {
         return category;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public boolean isCorrect(int answerIndex) {

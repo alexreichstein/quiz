@@ -66,10 +66,49 @@ public class Menu {
             return;
         }
 
-        System.out.println("Starting Quiz-Game! " + player.getName());
+        // Välj nivå
+        System.out.println("\nChoose difficulty level:");
+        System.out.println("1. Level 1 (Easy)");
+        System.out.println("2. Level 2 (Medium)");
+        System.out.println("3. Level 3 (Hard)");
+        System.out.print("Enter your choice: ");
 
-        List<Question> questions = new QuestionBank().getRandomQuestions();
+        int levelChoice = scanner.nextInt();
+        scanner.nextLine();
+
+        int selectedLevel = 1;
+        switch (levelChoice) {
+
+            case 1:
+                selectedLevel = 1;
+                System.out.println("\n=== Starting Level 1 ===");
+                break;
+
+                case 2:
+                    selectedLevel = 2;
+                    System.out.println("\n=== Starting Level 2 ===");
+                    break;
+
+                    case 3:
+                        selectedLevel = 3;
+                        System.out.println("\n=== Starting Level 3 ===");
+                        break;
+                        default:
+        }
+
+
+        System.out.println("Player: " + player.getName());
+
+        QuestionBank bank = new QuestionBank();
+        List<Question> questions = bank.getRandomQuestionsByLevel(selectedLevel, 15);
+
+        if (questions.isEmpty()) {
+            System.out.println("no questions available for this level!");
+            return;
+        }
+
         int score = 0;
+
 
         for (Question q : questions) {
             System.out.println("\n" + q.getQuestionText());
