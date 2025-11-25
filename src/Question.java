@@ -1,8 +1,8 @@
 public class Question {
-    private String questionText;
-    private String[] options;
-    private int correctAnswerIndex; // 0–3
-    private String category;        // t.ex. "Sport", "Film"
+    private final String questionText;
+    private final String[] options;
+    private final int correctAnswerIndex; // 0–3
+    private final String category;        // t.ex. "Sport", "Film"
 
     public Question(String questionText, String[] options, int correctAnswerIndex, String category) {
         this.questionText = questionText;

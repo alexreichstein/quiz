@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
     Scanner scanner = new Scanner(System.in);
+    ScoreManager scoreManager = new ScoreManager();
 
     private Player player;
 
@@ -12,7 +13,8 @@ public class Menu {
             System.out.println("Welcome to Quiz\n" +
                     "1. New Player\n" +
                     "2. New Game\n" +
-                    "3. Quit");
+                    "3. High score\n" +
+                    "4. Quit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -25,6 +27,9 @@ public class Menu {
                     startNewGame();
                     break;
                 case 3:
+                    showHighScores();
+                    break;
+                case 4:
                     System.out.println("Good Bye!");
                     return;
                 default:
@@ -33,12 +38,26 @@ public class Menu {
         }
     }
 
+    private void showHighScores() {
+        System.out.println("\n--- High Scores ---");
+        List<Player> scores = scoreManager.getHighScores();
+        if (scores.isEmpty()) {
+            System.out.println("No scores yet!");
+        } else {
+            int rank = 1;
+            for (Player p : scores) {
+                System.out.println(rank + ". " + p.getName() + " - " + p.getScore() + "p");
+                rank++;
+            }
+        }
+        System.out.println("-------------------\n");
+    }
+
     private void createNewPlayer() {
         System.out.println("Enter player name: ");
         String name = scanner.nextLine();
         player = new Player(name, 0);
         System.out.println("Player created " + player.getName());
-
     }
 
     private void startNewGame() {
@@ -68,20 +87,27 @@ public class Menu {
                 System.out.println("Correct!");
                 score++;
 
-            if (score >= 10) {
-                System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
-                return;
-            }
+                if (score >= 10) {
+                    System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
+
+
+                    player.setScore(score);
+                    scoreManager.saveScore(player);
+                    return;
+                }
 
             } else {
                 System.out.println("Wrong!");
                 System.out.println("Correct answer:" + options[q.getCorrectAnswerIndex()]);
             }
         }
+
         System.out.println("\nQuiz finished!");
         System.out.println("Score: " + score + "/" + questions.size());
-    }
 
+        player.setScore(score);
+        scoreManager.saveScore(player);
+    }
 }
 
 

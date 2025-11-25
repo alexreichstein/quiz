@@ -1,11 +1,11 @@
 public class Player {
 
-    private String name;
+    private final String name;
     private int score;
 
     public Player(String name, int score) {
         this.name = name;
-        this.score = 0;
+        this.score = score;
     }
 
     public String getName() {
@@ -14,6 +14,10 @@ public class Player {
 
     public int getScore() {
         return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
 
