@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -101,9 +102,10 @@ public class Menu {
 
         QuestionBank bank = new QuestionBank();
         List<Question> questions = bank.getRandomQuestionsByLevel(selectedLevel, 15);
+        List<Question> wrongAnswers = new ArrayList<>();
 
         if (questions.isEmpty()) {
-            System.out.println("no questions available for this level!");
+            System.out.println("No questions available for this level!");
             return;
         }
 
@@ -118,9 +120,14 @@ public class Menu {
                 System.out.println((i + 1) + ". " + options[i]);
             }
 
-            System.out.print("Enter your answer: ");
+            System.out.print("Enter your answer (0 to stop): ");
             int answer = scanner.nextInt();
             scanner.nextLine();
+
+            if (answer == 0) {
+                System.out.println("Game stopped! ");
+                break;
+            }
 
             if (q.isCorrect(answer - 1)) {
                 System.out.println("Correct!");
@@ -128,6 +135,8 @@ public class Menu {
 
                 if (score >= 10) {
                     System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
+
+                    showWrongAnswers(wrongAnswers);
 
 
                     player.setScore(score);
@@ -138,6 +147,8 @@ public class Menu {
             } else {
                 System.out.println("Wrong!");
                 System.out.println("Correct answer:" + options[q.getCorrectAnswerIndex()]);
+
+                wrongAnswers.add(q);
             }
         }
 
@@ -146,6 +157,18 @@ public class Menu {
 
         player.setScore(score);
         scoreManager.saveScore(player);
+
+    }
+
+    private void showWrongAnswers(List<Question> wrongAnswers) {
+        if (!wrongAnswers.isEmpty()) {
+            System.out.println("\nWrong answers:");
+            for (Question q : wrongAnswers) {
+                System.out.println("Question" + q.getQuestionText());
+                String correctAnswer = q.getOptions()[q.getCorrectAnswerIndex()];
+                System.out.println("Correct answer: " + correctAnswer);
+            }
+        }
     }
 }
 
