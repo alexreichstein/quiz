@@ -118,9 +118,14 @@ public class Menu {
                 System.out.println((i + 1) + ". " + options[i]);
             }
 
-            System.out.print("Enter your answer: ");
+            System.out.print("Enter your answer (0 to stop): ");
             int answer = scanner.nextInt();
             scanner.nextLine();
+
+            if (answer == 0) {
+                System.out.println("Game stopped! ");
+                break;
+            }
 
             if (q.isCorrect(answer - 1)) {
                 System.out.println("Correct!");
