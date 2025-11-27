@@ -111,6 +111,8 @@ public class Menu {
 
         int score = 0;
 
+        List<Integer> wrongQuestions = new ArrayList<>();
+        int questionNumber = 1;
 
         for (Question q : questions) {
             System.out.println("\n" + q.getQuestionText());
@@ -136,20 +138,23 @@ public class Menu {
                 if (score >= 10) {
                     System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
 
-                    showWrongAnswers(wrongAnswers);
+
 
 
                     player.setScore(score);
                     scoreManager.saveScore(player);
+
+                    printWrongQuestions(wrongQuestions);
                     return;
                 }
 
             } else {
                 System.out.println("Wrong!");
                 System.out.println("Correct answer:" + options[q.getCorrectAnswerIndex()]);
+                wrongQuestions.add(questionNumber); // spara numret på fel fråga
 
-                wrongAnswers.add(q);
             }
+            questionNumber++; // Nästa fråga får +1
         }
 
         System.out.println("\nQuiz finished!");
@@ -158,17 +163,24 @@ public class Menu {
         player.setScore(score);
         scoreManager.saveScore(player);
 
+        printWrongQuestions(wrongQuestions);
+
     }
 
-    private void showWrongAnswers(List<Question> wrongAnswers) {
-        if (!wrongAnswers.isEmpty()) {
-            System.out.println("\nWrong answers:");
-            for (Question q : wrongAnswers) {
-                System.out.println("Question" + q.getQuestionText());
-                String correctAnswer = q.getOptions()[q.getCorrectAnswerIndex()];
-                System.out.println("Correct answer: " + correctAnswer);
+    private void printWrongQuestions(List<Integer> wrongQuestions) {
+        if (wrongQuestions.isEmpty()) {
+            System.out.println("Du hade inga fel – perfekt!");
+            return;
+        }
+
+        System.out.print("Du hade fel på fråga: ");
+        for (int i = 0; i < wrongQuestions.size(); i++) {
+            System.out.print(wrongQuestions.get(i));
+            if (i < wrongQuestions.size() - 1) {
+                System.out.print(", ");
             }
         }
+        System.out.println();
     }
 }
 

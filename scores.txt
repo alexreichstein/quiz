@@ -1,3 +1,5 @@
-Stefan:0
-Stefan:0
-Stefan:0
+Stefan:100
+Stefan:99
+Stefan:98
+stefan:7
+stefan:4
