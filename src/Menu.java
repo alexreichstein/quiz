@@ -141,8 +141,8 @@ public class Menu {
 
 
 
-                    player.setScore(score);
-                    scoreManager.saveScore(player);
+                   // player.setScore(score);
+                   // scoreManager.saveScore(player);
 
                     printWrongQuestions(wrongQuestions);
                     return;
