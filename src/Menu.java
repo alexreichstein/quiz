@@ -85,16 +85,16 @@ public class Menu {
                 System.out.println("\n=== Starting Level 1 ===");
                 break;
 
-                case 2:
-                    selectedLevel = 2;
-                    System.out.println("\n=== Starting Level 2 ===");
-                    break;
+            case 2:
+                selectedLevel = 2;
+                System.out.println("\n=== Starting Level 2 ===");
+                break;
 
-                    case 3:
-                        selectedLevel = 3;
-                        System.out.println("\n=== Starting Level 3 ===");
-                        break;
-                        default:
+            case 3:
+                selectedLevel = 3;
+                System.out.println("\n=== Starting Level 3 ===");
+                break;
+            default:
         }
 
 
@@ -135,18 +135,19 @@ public class Menu {
                 System.out.println("Correct!");
                 score++;
 
-                if (score >= 10) {
-                    System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
 
-
+               // if (score >= 10) {
+                //    System.out.println("You´ve reached 10 points! Good job!\n Game completed!");
 
 
                    // player.setScore(score);
                    // scoreManager.saveScore(player);
 
-                    printWrongQuestions(wrongQuestions);
-                    return;
-                }
+                   // printWrongQuestions(wrongQuestions);
+
+
+
+              //  }
 
             } else {
                 System.out.println("Wrong!");
@@ -179,9 +180,13 @@ public class Menu {
             if (i < wrongQuestions.size() - 1) {
                 System.out.print(", ");
             }
+
+
+
         }
         System.out.println();
     }
+
 }
 
 
