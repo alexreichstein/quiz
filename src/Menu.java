@@ -170,11 +170,11 @@ public class Menu {
 
     private void printWrongQuestions(List<Integer> wrongQuestions) {
         if (wrongQuestions.isEmpty()) {
-            System.out.println("Du hade inga fel – perfekt!");
+            System.out.println("You had no wrong answers – perfect! ");
             return;
         }
 
-        System.out.print("Du hade fel på fråga: ");
+        System.out.print("You answered incorrectly on question: ");
         for (int i = 0; i < wrongQuestions.size(); i++) {
             System.out.print(wrongQuestions.get(i));
             if (i < wrongQuestions.size() - 1) {

@@ -3,3 +3,9 @@ Stefan:99
 Stefan:98
 stefan:7
 stefan:4
+Amanda:10
+Stefan:10
+stefan:3
+stefan:0
+Stefan:10
+stefan:10

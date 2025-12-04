@@ -23,7 +23,6 @@ Se hur långt vi hinner med GUI-utvecklingen.
 | **Stefan** | GUI |
 | **Alex**   | Timelimit |
 | **Robin**  | Poängsystemet |
-
 ---
 
 ## ⏱ 4. Estimerad arbetsinsats  
